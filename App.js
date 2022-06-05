@@ -1,30 +1,30 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
   const [name, setName] = useState("cheran");
-  const [toggle, setToggle] = useState(false);
-  function clickHandler(e) {
-    e.preventDefault();
-    if (!toggle) {
-      setName("changed");
-      setToggle(true);
-    } else {
-      setName("cheran");
-      setToggle(false);
-    }
-  }
+  const [age, setAge] = useState("30");
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>printing name {name}</Text>
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button title="update name" onPress={clickHandler} />
-      </View>
-      <StatusBar style="auto" />
+      <Text>Enter Name:</Text>
+      {/* multiline prop inside TextInput */}
+      <TextInput
+        style={styles.input}
+        placeholder="Name.."
+        onChangeText={(val) => setName(val)}
+      />
+      <Text>Enter Age</Text>
+      <TextInput
+        keyboardType="numeric"
+        style={styles.input}
+        placeholder="age.."
+        onChangeText={(val) => setAge(val)}
+      />
+
+      <Text>name is {name}</Text>
+      <Text>age is {age}</Text>
     </View>
   );
 }
@@ -36,14 +36,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  header: {
-    backgroundColor: "pink",
-    padding: 20,
-  },
-  boldText: {
-    fontWeight: "bold",
-  },
-  buttonContainer: {
-    marginTop: 20,
+  input: {
+    borderWidth: 1,
+    borderColor: "#777",
+    padding: 8,
+    margin: 10,
+    width: 200,
   },
 });
