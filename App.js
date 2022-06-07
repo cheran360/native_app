@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
+import SandBox from "./components/sandBox";
 
 import Header from "./components/header";
 import TodoItem from "./components/TodoItem";
@@ -74,8 +75,10 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 40,
+    flex: 1,
   },
   list: {
+    flex: 1,
     marginTop: 20,
   },
 });
